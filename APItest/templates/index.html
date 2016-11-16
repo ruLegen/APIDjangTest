@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Programm AJAX</title>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="application/javascript">
+    $(document).ready(function () {
+        var name = "";
+        var coast = 0;
+        var description="";
+        var button = $('#sender');
+        var method;
+        var id;
+        button.click(function (sernder) {
+            name = $('#name').val();
+            coast= parseInt($('#coast').val());
+            description = $('#description').val();
+            method = $('#method').val();
+            id = $('#id').val();
+
+            var Program = new Object();
+            Program.name = name;
+            Program.coast = coast;
+            Program.description = description;
+            var request = JSON.stringify(Program)
+            if(method != "POST")
+            {
+              $.ajax({
+                method:method,
+                url:"/api/program/"+id,
+                dataType:'json'
+            }).done(function (data,data2,data4,data3) {
+                console.log(data);
+                $('#Rid').html("<h3>ID: "+data.id+"</h3>");
+                $('#Rname').html("<h3>Name: "+data.name+"</h3>");
+                $('#Rcoast').html("<h3>Coast: "+data.coast+"</h3>");
+                $('#Rdescrition').html("<h3>Description: "+data.description+"</h3>");
+
+               // $('#result').html(JSON.stringify(data));
+                }).fail(function (data) {
+                  console.log((data))
+                  $('#Rid').html(data.responseText);
+                  $('#Rname').html('');
+                  $('#Rcoast').html('');
+                  $('#Rdescrition').html('');
+              })
+            }
+            else {
+             $.ajax({
+                method:method,
+                url:"/api/program",
+                dataType:'json',
+                data: request
+            }).done(function (data,data2,data4,data3) {
+                console.log(data);
+                $('#Rid').html();
+                $('#Rname').html(data.name);
+                $('#Rcoast').html(data.coast);
+                $('#Rdescrition').html(data.description);
+                }).fail(function (data) {
+                  $('#Rid').html(data.responseText);
+                  $('#Rname').html('');
+                  $('#Rcoast').html('');
+                  $('#Rdescrition').html('');
+            })
+            }
+
+        });
+    });
+        </script>
+</head>
+<body>
+<center><h1>AJAX CHECKER. JSON sender</h1></center>
+<select id="method">
+    <option value="POST">POST</option>
+    <option value="GET">GET</option>
+    <option value="DELETE">DELETE</option>
+</select></br>
+<label for="id">id</label></label><input id="id" size="4"></br>
+<label for="name">name</label></label><input id="name" size="30"></br>
+<label for="coast">coast</label></label> <input id="coast" size="9"></br>
+<textarea cols="30" rows="10" id="description" size="9"></textarea></br>
+<button id="sender">SEND</button>
+<hr>
+<div id="result">
+    <div id="Rid"></div>
+    <div id="Rname"></div>
+    <div id="Rcoast"></div>
+    <div id="Rdescrition"></div>
+
+</div>
+</body>
+</html>
