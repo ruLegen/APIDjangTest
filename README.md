@@ -1,3 +1,4 @@
+<pre>
 Настроить apiproject/settings.py
 
 DATABASES = {
@@ -23,3 +24,4 @@ DATABASES = {
 /api/program/count -колличество записей в БД
 
 (/api/program/) -не правильный адрес
+</pre>
