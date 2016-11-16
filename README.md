@@ -1,6 +1,8 @@
 <pre>
+Для работы проекта нужно:
+Установить rest-framework
 Настроить apiproject/settings.py
-
+//Изменить данные о БД
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -12,6 +14,7 @@ DATABASES = {
     }
 }
 //
+
 Для начало нужно добавить значения в БД через /api/
 
 При методе GET и DELETE - ключевое поле тут id. Остлаьные поля не активны
