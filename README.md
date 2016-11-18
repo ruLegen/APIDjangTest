@@ -1,17 +1,8 @@
-# Some test
-
-## GRoup 1
-
-### 3
-
-+ awasd 
-
-- awdawdawd
-<pre>
-Для работы проекта нужно:
-Установить rest-framework
-Настроить apiproject/settings.py
-//Изменить данные о БД
+# Для работы проекта нужно:
++ Установить rest-framework
++ Настроить apiproject/settings.py
+    + //Изменить данные о БД
+        +<pre>
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -22,18 +13,5 @@ DATABASES = {
     'PORT': '5432', # Set to empty string for default.
     }
 }
-//
-
-Для начало нужно добавить значения в БД через /api/
-
-При методе GET и DELETE - ключевое поле тут id. Остлаьные поля не активны
-При методе POST поле id не играет роль, его можно не заполнять
-
-//
-/api/ - поля для ввода получения и удаления записей
-/api/program - список всех записей
-/api/program/{id} - получение конкретной программы
-/api/program/count -колличество записей в БД
-
-(/api/program/) -не правильный адрес
 </pre>
+//
