@@ -1,3 +1,12 @@
+# Some test
+
+## GRoup 1
+
+### 3
+
++ awasd 
+
+- awdawdawd
 <pre>
 Для работы проекта нужно:
 Установить rest-framework
